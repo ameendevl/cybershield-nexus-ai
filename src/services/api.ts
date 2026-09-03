@@ -629,4 +629,7 @@ export const apiService = {
   async getGlobalAttacks(): Promise<GlobalAttack[]> { return generateGlobalAttacks(800); },
 };
 
+export const authApi = apiService;
+export default apiService;
+
 
