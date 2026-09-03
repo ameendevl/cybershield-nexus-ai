@@ -1,0 +1,214 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "CyberShield SOC Auth & Sandbox API",
+    "description": "Enterprise Cybersecurity Authentication, Clerk Capabilities, Health Monitoring & ReqRes Cloud Proxy Endpoints",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:4000/api",
+      "description": "Local SOC Backend Gateway"
+    }
+  ],
+  "paths": {
+    "/healthz": {
+      "get": {
+        "summary": "Health check for Express API",
+        "responses": {
+          "200": {
+            "description": "API is online",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "ok" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/capabilities": {
+      "get": {
+        "summary": "Public authentication capabilities",
+        "responses": {
+          "200": {
+            "description": "Capabilities descriptor",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "provider": { "type": "string", "example": "clerk" },
+                    "methods": {
+                      "type": "object",
+                      "properties": {
+                        "emailPassword": { "type": "boolean" },
+                        "googleOAuth": { "type": "boolean" },
+                        "webAuthn": { "type": "boolean" }
+                      }
+                    },
+                    "notes": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "summary": "Current authenticated session",
+        "security": [{ "clerkSession": [] }],
+        "responses": {
+          "200": {
+            "description": "Authenticated session info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "authenticated": { "type": "boolean" },
+                    "userId": { "type": "string" },
+                    "sessionId": { "type": "string" },
+                    "organizationId": { "type": "string", "nullable": true },
+                    "provider": { "type": "string" }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/activity": {
+      "get": {
+        "summary": "Audit activity timeline",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": { "type": "integer", "default": 20 }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Activity stream",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "event": { "type": "string" },
+                          "at": { "type": "string", "format": "date-time" },
+                          "requestId": { "type": "string" },
+                          "ip": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reqres/users": {
+      "get": {
+        "summary": "List demo users from ReqRes Cloud",
+        "parameters": [
+          { "name": "page", "in": "query", "schema": { "type": "integer", "default": 1 } },
+          { "name": "per_page", "in": "query", "schema": { "type": "integer", "default": 6 } }
+        ],
+        "responses": {
+          "200": { "description": "Users list" },
+          "502": { "description": "ReqRes unavailable" }
+        }
+      },
+      "post": {
+        "summary": "Create demo user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "job"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "job": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Demo account created" }
+        }
+      }
+    },
+    "/reqres/users/{id}": {
+      "get": {
+        "summary": "Get demo user detail",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "User detail" },
+          "404": { "description": "User not found" }
+        }
+      },
+      "put": {
+        "summary": "Update demo user",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "job"],
+                "properties": {
+                  "name": { "type": "string" },
+                  "job": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "User updated" }
+        }
+      },
+      "delete": {
+        "summary": "Delete demo user",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "204": { "description": "User deleted" }
+        }
+      }
+    }
+  }
+}
