@@ -773,20 +773,19 @@ export default function PlatformOverview() {
         ══════════════════════════════════════════════════════════════════ */}
         <div className={`relative rounded-3xl overflow-hidden p-8 md:p-14 shadow-2xl border ${
           isLight
-            ? 'bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 border-cyan-500/30'
+            ? 'bg-gradient-to-br from-indigo-600 via-blue-700 to-cyan-700 border-cyan-400/40'
             : 'bg-gradient-to-br from-[#030d1f] via-[#050f24] to-[#040a1a] border-cyan-500/25'
         }`}>
           {/* Ambient background glows */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/8 rounded-full blur-[150px] pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/8 rounded-full blur-[130px] pointer-events-none" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-purple-600/5 rounded-full blur-[180px] pointer-events-none" />
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-300/10 rounded-full blur-[150px] pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-300/10 rounded-full blur-[130px] pointer-events-none" />
 
           <div className="relative z-10 max-w-5xl">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-mono font-bold tracking-widest uppercase mb-6 shadow-inner">
-              <Sparkles className="w-4 h-4 text-cyan-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/15 border border-white/30 text-white text-xs font-mono font-bold tracking-widest uppercase mb-6 shadow-inner">
+              <Sparkles className="w-4 h-4 text-cyan-200 animate-pulse" />
               <span>Enterprise AI-Powered Cybersecurity Operating System</span>
-              <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 text-[9px] border border-emerald-500/30">
+              <span className="px-2 py-0.5 rounded bg-emerald-400/20 text-emerald-200 text-[9px] border border-emerald-300/30">
                 v2.6 PRO
               </span>
             </div>
@@ -794,18 +793,18 @@ export default function PlatformOverview() {
             {/* Headline */}
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tight text-white leading-none mb-6">
               CyberShield{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-white to-indigo-200">
                 Nexus
               </span>
               <br />
-              <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-300 tracking-wide">
+              <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-100 tracking-wide">
                 AI SOC Platform — Complete Guide
               </span>
             </h1>
 
             {/* Tagline */}
-            <p className="text-base md:text-xl text-slate-400 leading-relaxed max-w-4xl mb-8">
-              <strong className="text-cyan-300">CyberShield Nexus</strong> is a unified next-generation
+            <p className="text-base md:text-xl text-blue-100/90 leading-relaxed max-w-4xl mb-8">
+              <strong className="text-cyan-200">CyberShield Nexus</strong> is a unified next-generation
               cybersecurity command ecosystem with <strong className="text-white">30+ specialized security modules</strong>.
               From real-time threat detection and AI-powered autonomous response to compliance reporting and executive dashboards —
               every tool your SOC team needs in one platform.
@@ -818,14 +817,13 @@ export default function PlatformOverview() {
                 return (
                   <div
                     key={s.label}
-                    className="p-3.5 rounded-2xl bg-black/40 border border-white/8 flex flex-col items-center text-center group hover:border-white/20 transition-all"
-                    style={{ borderColor: `${s.color}20` }}
+                    className="p-3.5 rounded-2xl bg-white/15 border border-white/25 flex flex-col items-center text-center hover:bg-white/20 transition-all backdrop-blur-sm"
                   >
-                    <Icon className="w-4 h-4 mb-1.5" style={{ color: s.color }} />
-                    <p className="text-lg sm:text-xl font-black font-mono" style={{ color: s.color }}>
+                    <Icon className="w-4 h-4 mb-1.5 text-white/80" />
+                    <p className="text-lg sm:text-xl font-black font-mono text-white">
                       {s.value}
                     </p>
-                    <p className="text-[9px] text-slate-500 uppercase font-mono tracking-wider leading-tight mt-0.5">
+                    <p className="text-[9px] text-blue-100/70 uppercase font-mono tracking-wider leading-tight mt-0.5">
                       {s.label}
                     </p>
                   </div>
@@ -837,7 +835,7 @@ export default function PlatformOverview() {
             <div className="flex flex-wrap gap-3">
               <button
                 onClick={() => handleLaunchModule('command-center')}
-                className="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 hover:brightness-110 text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 shadow-xl shadow-cyan-500/20 cursor-pointer transition-all hover:scale-105"
+                className="px-6 py-3.5 rounded-2xl bg-white text-indigo-700 hover:bg-blue-50 font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 shadow-xl cursor-pointer transition-all hover:scale-105"
               >
                 <Activity className="w-4 h-4" />
                 <span>Launch Command Center</span>
@@ -845,14 +843,14 @@ export default function PlatformOverview() {
               </button>
               <button
                 onClick={() => handleLaunchModule('threat-globe')}
-                className="px-6 py-3.5 rounded-2xl bg-black/60 hover:bg-cyan-500/10 border border-cyan-500/30 hover:border-cyan-400 text-cyan-300 font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer hover:scale-105"
+                className="px-6 py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer hover:scale-105 backdrop-blur-sm"
               >
                 <Globe className="w-4 h-4" />
                 <span>3D Threat Globe</span>
               </button>
               <button
                 onClick={() => handleLaunchModule('ai-copilot')}
-                className="px-6 py-3.5 rounded-2xl bg-black/60 hover:bg-purple-500/10 border border-purple-500/30 hover:border-purple-400 text-purple-300 font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer hover:scale-105"
+                className="px-6 py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer hover:scale-105 backdrop-blur-sm"
               >
                 <Bot className="w-4 h-4" />
                 <span>AI Copilot</span>
@@ -1360,39 +1358,50 @@ export default function PlatformOverview() {
         {/* ══════════════════════════════════════════════════════════════════
             BOTTOM CTA
         ══════════════════════════════════════════════════════════════════ */}
-        <div className="relative p-10 rounded-3xl overflow-hidden text-center border border-cyan-400/25 shadow-2xl"
-          style={{ background: 'linear-gradient(135deg, #030d1f 0%, #05122a 50%, #060a1e 100%)' }}
+        <div
+          className={`relative p-10 rounded-3xl overflow-hidden text-center shadow-2xl border ${
+            isLight
+              ? 'bg-gradient-to-br from-indigo-600 via-blue-700 to-cyan-700 border-cyan-400/40'
+              : 'border-cyan-400/25'
+          }`}
+          style={isLight ? {} : { background: 'linear-gradient(135deg, #030d1f 0%, #05122a 50%, #060a1e 100%)' }}
         >
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/8 rounded-full blur-[100px] pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-300/10 rounded-full blur-[100px] pointer-events-none" />
           <div className="relative z-10 max-w-2xl mx-auto space-y-4">
             <div className="flex justify-center mb-4">
-              <Shield className="w-14 h-14 text-cyan-400 animate-pulse" />
+              <Shield className="w-14 h-14 text-white animate-pulse" />
             </div>
             <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
               Ready to Secure Your Enterprise?
             </h3>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-xl mx-auto">
+            <p className={`text-sm leading-relaxed max-w-xl mx-auto ${
+              isLight ? 'text-blue-100/90' : 'text-slate-400'
+            }`}>
               All 30+ security modules are active and ready. Start investigating live global telemetry,
               simulating attack vectors, and dispatching AI autonomous containment today.
             </p>
             <div className="flex flex-wrap justify-center gap-3 pt-4">
               <button
                 onClick={() => handleLaunchModule('command-center')}
-                className="px-8 py-3.5 rounded-2xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 hover:brightness-110 text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 shadow-xl shadow-cyan-500/25 transition-all cursor-pointer hover:scale-105"
+                className={`px-8 py-3.5 rounded-2xl font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 shadow-xl transition-all cursor-pointer hover:scale-105 ${
+                  isLight
+                    ? 'bg-white text-indigo-700 hover:bg-blue-50'
+                    : 'bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 hover:brightness-110 text-white shadow-cyan-500/25'
+                }`}
               >
                 <Activity className="w-4 h-4" />
                 <span>Go To Command Center</span>
               </button>
               <button
                 onClick={() => handleLaunchModule('ai-copilot')}
-                className="px-8 py-3.5 rounded-2xl bg-black/60 hover:bg-purple-500/10 border border-purple-500/30 hover:border-purple-400 text-purple-300 font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer hover:scale-105"
+                className="px-8 py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer hover:scale-105 backdrop-blur-sm"
               >
                 <Bot className="w-4 h-4" />
                 <span>Launch AI Copilot</span>
               </button>
               <button
                 onClick={() => handleLaunchModule('settings')}
-                className="px-8 py-3.5 rounded-2xl bg-black/60 hover:bg-white/5 border border-white/15 hover:border-white/25 text-slate-300 font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer hover:scale-105"
+                className="px-8 py-3.5 rounded-2xl bg-white/15 hover:bg-white/25 border border-white/30 text-white font-bold text-sm uppercase tracking-wider flex items-center gap-2.5 transition-all cursor-pointer hover:scale-105 backdrop-blur-sm"
               >
                 <Sliders className="w-4 h-4" />
                 <span>Configure Platform</span>
