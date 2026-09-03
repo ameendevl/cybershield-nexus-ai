@@ -66,7 +66,7 @@ class AIService {
   private async callGemini(prompt: string, systemPrompt?: string): Promise<string | null> {
     if (!this.geminiKey) return null;
 
-    const models = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-pro'];
+    const models = ['gemini-3.6-flash', 'gemini-3.5-flash', 'gemini-flash-latest'];
     const fullPrompt = systemPrompt ? `${systemPrompt}\n\nUser Security Query: ${prompt}` : prompt;
 
     for (const model of models) {

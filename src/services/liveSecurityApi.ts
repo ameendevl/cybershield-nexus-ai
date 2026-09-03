@@ -78,6 +78,32 @@ export const liveSecurityApi = {
   // 2. Abuse.ch URLhaus API: Fetch Real Live Malware & Cyber Threat Feeds
   async fetchLiveUrlhausThreats(): Promise<LiveThreatFeed[]> {
     try {
+      // First try open public URLhaus feed
+      const publicRes = await fetch('https://urlhaus.abuse.ch/downloads/json_recent/');
+      if (publicRes.ok) {
+        const data = await publicRes.json();
+        const entries = Object.entries(data).slice(0, 15);
+        if (entries.length > 0) {
+          return entries.map(([id, val]: [string, any]) => {
+            const item = Array.isArray(val) ? val[0] : val;
+            const threatType = item.threat || 'malware_download';
+            const tags = item.tags || ['malware', 'botnet'];
+            return {
+              id: `threat_url_${id}`,
+              title: `Malicious Payload Detected: ${threatType.toUpperCase()}`,
+              url: item.url || '',
+              url_status: item.url_status || 'online',
+              threat: threatType,
+              tags,
+              date_added: item.dateadded || item.date_added || new Date().toISOString(),
+              reporter: item.reporter || 'abuse.ch Security Telemetry',
+              severity: item.url_status === 'online' ? 'critical' : 'high',
+            };
+          });
+        }
+      }
+
+      // Fallback to API v1 endpoint
       const res = await fetch('https://urlhaus-api.abuse.ch/v1/urls/recent/');
       if (res.ok) {
         const data = await res.json();
