@@ -6,6 +6,9 @@
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.4-38bdf8.svg)](https://tailwindcss.com/)
 [![Three.js](https://img.shields.io/badge/Three.js-WebGL_3D-black.svg)](https://threejs.org/)
 [![License](https://img.shields.io/badge/License-Enterprise-green.svg)](#)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-ameendevl.github.io-00d2ff.svg)](https://ameendevl.github.io/cybershield-nexus-ai/)
+
+> 🌐 **Live Website Link**: [https://ameendevl.github.io/cybershield-nexus-ai/](https://ameendevl.github.io/cybershield-nexus-ai/)
 
 > **Next-Generation Autonomous Cybersecurity SOC Operations & Threat Defense Platform** featuring 3D WebGL Threat Telemetry, Live URL Security Scanner, Corporate Domain Uptime & SSL Expiry Monitor, 1-Click Auto-Patch Engine, Multi-Vendor Firewall Blocklist Exporter, and Dual-Theme (Dark & Light) Architecture.
 
